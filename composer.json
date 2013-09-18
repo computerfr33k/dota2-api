@@ -1,8 +1,8 @@
 {
-    "name": "DotA 2 API",
+    "name": "kronusme/dota2-api",
     "description": "DotA 2 Web API PHP wrapper",
     "license": "MIT",
-    "type": "open-source lib",
+    "type": "library",
     "keywords": ["dota2", "api", "wrapper"],
     "authors": [
         {
