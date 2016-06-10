@@ -1,9 +1,9 @@
 <?php
 /**
- * Information about items
+ * Information about items.
  *
  * @author kronus
- * @package data
+ *
  * @example
  * <code>
  *   $items = new items();
@@ -13,12 +13,15 @@
  *   $items->get_img_url_by_id(149); // thumb
  * </code>
  */
-class items extends heroes_data {
+class items extends heroes_data
+{
     /**
-     * Empty slot has id = 0
+     * Empty slot has id = 0.
      */
     const empty_id = 0;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->set_filename('items.json');
         $this->set_field('items');
     }

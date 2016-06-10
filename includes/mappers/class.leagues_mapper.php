@@ -1,5 +1,5 @@
 <?php
 
-abstract class leagues_mapper {
-
+abstract class leagues_mapper
+{
 }

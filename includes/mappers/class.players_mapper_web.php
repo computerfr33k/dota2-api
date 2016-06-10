@@ -1,6 +1,6 @@
 <?php
 /**
- * Load info about players
+ * Load info about players.
  *
  * @example
  * <code>
@@ -14,86 +14,94 @@
  *  print_r($players_info);
  * </code>
  */
-class players_mapper_web {
-    /**
-     *
-     */
+class players_mapper_web
+{
     const player_steam_url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/';
     /**
      * @var array
      */
-    private $_ids = array();
+    private $_ids = [];
 
     /**
      * @param $id
+     *
      * @return players_mapper_web
      */
-    public function add_id($id) {
-        $id = (string)$id;
+    public function add_id($id)
+    {
+        $id = (string) $id;
         if (!in_array($id, $this->_ids)) {
             array_push($this->_ids, $id);
         }
+
         return $this;
     }
 
     /**
      * @param $id
+     *
      * @return players_mapper_web
      */
-    public function remove_id($id) {
-        $id = (string)$id;
-        foreach($this->_ids as $k => $v) {
+    public function remove_id($id)
+    {
+        $id = (string) $id;
+        foreach ($this->_ids as $k => $v) {
             if ($v == $id) {
                 unset($this->_ids[$k]);
             }
         }
+
         return $this;
     }
 
     /**
      * @return players_mapper_web
      */
-    public function remove_ids() {
-        $this->_ids = array();
+    public function remove_ids()
+    {
+        $this->_ids = [];
+
         return $this;
     }
 
     /**
      * @return array
      */
-    public function get_ids() {
+    public function get_ids()
+    {
         return $this->_ids;
     }
 
     /**
      * @return string
      */
-    public function get_ids_string() {
+    public function get_ids_string()
+    {
         return implode(',', $this->get_ids());
     }
 
-    /**
-     *
-     */
-    public function __construct() {
 
+    public function __construct()
+    {
     }
 
     /**
      * @return array
      */
-    public function load() {
-        $request = new request(self::player_steam_url, array('steamids' => $this->get_ids_string()));
+    public function load()
+    {
+        $request = new request(self::player_steam_url, ['steamids' => $this->get_ids_string()]);
         $players_info = $request->send();
         if (is_null($players_info)) {
-            return null;
+            return;
         }
-        $players = array();
-        foreach($players_info->players[0] as $player_info) {
+        $players = [];
+        foreach ($players_info->players[0] as $player_info) {
             $player = new player();
-            $player->set_array((array)$player_info);
+            $player->set_array((array) $player_info);
             $players[$player->get('steamid')] = $player;
         }
+
         return $players;
     }
 }

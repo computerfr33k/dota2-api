@@ -1,9 +1,9 @@
 <?php
 /**
- * Information about heroes (id, name, localized name)
+ * Information about heroes (id, name, localized name).
  *
  * @author kronus
- * @package data
+ *
  * @example
  * <code>
  *   $heroes = new heroes();
@@ -13,8 +13,10 @@
  *   $heroes->get_img_url_by_id(97); // thumb
  * </code>
  */
-class heroes extends heroes_data {
-    public function __construct() {
+class heroes extends heroes_data
+{
+    public function __construct()
+    {
         $this->set_filename('heroes.json');
         $this->set_field('heroes');
         //$this->_suffixes['thumb'] = 'sb';
