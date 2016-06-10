@@ -1,8 +1,9 @@
 <?php
 /**
- * Load info about UGC objects
+ * Load info about UGC objects.
+ *
  * @author kronus
- * @package mappers
+ *
  * @example
  * <code>
  *   $match_mapper_web = new match_mapper_web(37633163);
@@ -13,10 +14,10 @@
  *   echo $logo_data->url;
  * </code>
  */
-class ugc_mapper_web {
-
+class ugc_mapper_web
+{
     /**
-     * Request url
+     * Request url.
      */
     const steam_ugc_url = 'http://api.steampowered.com/ISteamRemoteStorage/GetUGCFileDetails/v1/';
 
@@ -25,23 +26,26 @@ class ugc_mapper_web {
      */
     private $_ugcid;
 
-    public function __construct($ugcid) {
+    public function __construct($ugcid)
+    {
         $this->_ugcid = $ugcid;
     }
 
     /**
      * @param int $ugcid
+     *
      * @return object | null
      */
-    public function load($ugcid = null) {
+    public function load($ugcid = null)
+    {
         if (!is_null($ugcid)) {
             $this->_ugcid = $ugcid;
         }
         $request = new request(
             self::steam_ugc_url,
-            array('appid' => 570, 'ugcid' => $this->_ugcid)
+            ['appid' => 570, 'ugcid' => $this->_ugcid]
         );
-        return $request->send();
 
+        return $request->send();
     }
 }

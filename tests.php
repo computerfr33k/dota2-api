@@ -1,6 +1,6 @@
 <?php
 
-require_once ('config.php');
+require_once 'config.php';
 
 /*$matches_mapper_web = new matches_mapper_web();
 $matches_mapper_web->set_account_id(107567522)->set_tournament_games_only(true)->set_matches_requested(2);
@@ -72,4 +72,3 @@ print_r($leagues);*/
 /*$league_mapper = new league_mapper(22);
 $games = $league_mapper->load();
 print_r($games);*/
-

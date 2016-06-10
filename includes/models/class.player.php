@@ -1,13 +1,13 @@
 <?php
 /**
- * All info about one player
+ * All info about one player.
  *
  * @author kronus
- * @package models
  */
-class player extends stat_object {
+class player extends stat_object
+{
     /**
-     * This id used when some player select don't show personal statistic
+     * This id used when some player select don't show personal statistic.
      */
     const ANONYMOUS = 4294967295;
     /**
@@ -67,22 +67,26 @@ class player extends stat_object {
      */
     protected $_timecreated;
 
+
+    public function __construct()
+    {
+    }
+
     /**
+     * Convert DotA2 user id to Steam ID.
      *
-     */
-    public function __construct(){}
-    /**
-     * Convert DotA2 user id to Steam ID
      * @param string $id
+     *
      * @return string
      */
-    public static function convert_id($id) {
+    public static function convert_id($id)
+    {
         if (strlen($id) === 17) {
             $converted = substr($id, 3) - 61197960265728;
-        }
-        else {
+        } else {
             $converted = '765'.($id + 61197960265728);
         }
+
         return (string) $converted;
     }
 }
